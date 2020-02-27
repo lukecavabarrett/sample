@@ -5,6 +5,7 @@ parser.add_argument('--n',type=int,default=5,help='step number')
 parser.add_argument('--delay',type=int,default=1,help='single delay')
 args = parser.parse_args()
 sys.stderr.write('started process\n')
+sys.stderr.flush()
 for i in range(args.n):
     print(i)
     sys.stdout.flush()
