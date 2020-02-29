@@ -1,6 +1,6 @@
 import time, sys
 
-from python_samples.communication import communication
+from python_samples.worker import checkpoint
 
 sys.stdout.write('stdout: started process')
 sys.stdout.flush()
@@ -13,7 +13,7 @@ with open('hello.txt', 'w') as f:
     f.write("At time "+str(time.time())+"\n")
     f.close()
 
-ck = communication.checkpoint()
+ck = checkpoint.checkpoint()
 ck.link_file('hello.txt')
 ck.last_epoch = 45
 ck.best_epoch = 34
@@ -24,4 +24,4 @@ time.sleep(1)
 sys.stdout.write('stdout: finished process')
 sys.stdout.flush()
 exit(42)
-communication.comm_pipe.close()
+checkpoint.comm_pipe.close()

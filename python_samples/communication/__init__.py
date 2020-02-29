@@ -1,1 +1,0 @@
-comm_pipe = open('/tmp/worker_control_pipe', 'w')
