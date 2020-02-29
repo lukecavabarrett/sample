@@ -6,8 +6,6 @@ from python_samples import communication
 
 def send_object(obj):
     communication.comm_pipe.write(json.dumps(obj, default=lambda o: o.__dict__, sort_keys=True))
-    time.sleep(1)
-    communication.comm_pipe.flush()
     communication.comm_pipe.write('\0')
     communication.comm_pipe.flush()
 
