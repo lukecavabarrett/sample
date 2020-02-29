@@ -1,6 +1,6 @@
 import time, sys
 
-from python_samples.worker import checkpoint
+from .worker import checkpoint
 
 sys.stdout.write('stdout: started process')
 sys.stdout.flush()
@@ -24,4 +24,3 @@ time.sleep(1)
 sys.stdout.write('stdout: finished process')
 sys.stdout.flush()
 exit(42)
-checkpoint.comm_pipe.close()
