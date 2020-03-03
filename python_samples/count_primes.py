@@ -34,6 +34,7 @@ for n in range(args.n+1):
         primes += 1
     if n % args.print_every == 0:
         print(n, '/', args.n, ':', primes)
+        sys.stdout.flush()
     if args.borg_checkpoints and (n + 1) % args.borg_checkpoint_every == 0:
         ck = checkpoint.checkpoint()
         ck.n = n
