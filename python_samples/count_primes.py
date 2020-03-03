@@ -17,6 +17,9 @@ parser.add_argument('--borg_checkpoints', action='store_true', default=False,
 parser.add_argument('--borg_checkpoint_every', type=int, default=10, help='Save checkpoints to borg every.')
 args = parser.parse_args()
 
+start_index = 0
+primes = 0
+
 if args.borg_checkpoints:
     if not checkpoint.is_available():
         sys.stderr.write('borg checkpoints option not available\n')
@@ -27,14 +30,13 @@ if args.borg_checkpoints:
         if ck is None:
             sys.stderr.write('no checkpoint to be restored\n')
         else:
-            sys.stderr.write(ck)
-        # TODO: load checkpoints
+            sys.stderr.write('found checkpoint: starting from n=', ck.n)
+            start_index = ck.n
+            primes = ck.primes
 
 sys.stderr.flush()
-primes = 0
 
-
-for n in range(args.n+1):
+for n in range(start_index, args.n + 1):
     time.sleep(1)
     if is_prime(n):
         primes += 1
