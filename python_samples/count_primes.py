@@ -45,6 +45,7 @@ for n in range(start_index, args.n + 1):
         primes += 1
         with open('primes.txt', "a") as f:
             f.write(str(n) + '\n')
+            f.close()
     if n % args.print_every == 0:
         print(n, '/', args.n, ':', primes)
         sys.stdout.flush()
