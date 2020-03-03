@@ -23,10 +23,16 @@ if args.borg_checkpoints:
         args.borg_checkpoints = False
     else:
         sys.stderr.write('borg checkpoints option is available\n')
+        ck = checkpoint.restore_checkpoint()
+        if ck is None:
+            sys.stderr.write('no checkpoint to be restored\n')
+        else:
+            sys.stderr.write(ck)
         # TODO: load checkpoints
 
 sys.stderr.flush()
 primes = 0
+
 
 for n in range(args.n+1):
     time.sleep(1)
