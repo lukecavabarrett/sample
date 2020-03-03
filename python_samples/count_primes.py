@@ -30,7 +30,7 @@ if args.borg_checkpoints:
         if ck is None:
             sys.stderr.write('no checkpoint to be restored\n')
         else:
-            sys.stderr.write('found checkpoint: starting from n={}'.format(ck.n))
+            sys.stderr.write('found checkpoint: starting from n={}\n'.format(ck.n))
             start_index = ck.n
             primes = ck.primes
 
