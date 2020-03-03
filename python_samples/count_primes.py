@@ -1,4 +1,5 @@
 import argparse
+import pickle
 import time, sys
 from itertools import count, islice
 from math import sqrt
@@ -19,6 +20,8 @@ args = parser.parse_args()
 
 start_index = 0
 primes = 0
+with open('primes.txt', 'w'):
+    pass
 
 if args.borg_checkpoints:
     if not checkpoint.is_available():
@@ -40,6 +43,8 @@ for n in range(start_index, args.n + 1):
     time.sleep(1)
     if is_prime(n):
         primes += 1
+        with open('primes.txt', "a") as f:
+            f.write(str(n) + '\n')
     if n % args.print_every == 0:
         print(n, '/', args.n, ':', primes)
         sys.stdout.flush()
@@ -47,6 +52,7 @@ for n in range(start_index, args.n + 1):
         ck = checkpoint.checkpoint()
         ck.n = n
         ck.primes = primes
+        ck.link_file('primes.txt')
         ck.save_to_server()
 
 print('There are', primes, 'primes below', args.n)
