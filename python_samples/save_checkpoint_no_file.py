@@ -2,7 +2,6 @@ import time, sys
 
 from .worker import checkpoint
 
-
 if not checkpoint.is_available():
     sys.stderr.write('borg checkpoints option not available\n')
 else:
@@ -17,5 +16,3 @@ ck.jack = 'sparrow'
 ck.save_to_server()
 
 time.sleep(1)
-
-
