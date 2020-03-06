@@ -9,7 +9,7 @@ def is_available():
 
 class checkpoint:
     def __init__(self):
-        self.__linked_files = []
+        self.___linked_files = []
 
     def save_to_server(self):
         self.__request_type = 'save_checkpoint'
@@ -18,7 +18,7 @@ class checkpoint:
         comm_pipe.flush()
 
     def link_file(self, path):
-        self.__linked_files.append(path)
+        self.___linked_files.append(path)
 
 def restore_checkpoint():
     if not os.path.exists('/tmp/__hydra_checkpoint.json'):
