@@ -20,9 +20,9 @@ class checkpoint:
 
 
 def restore_checkpoint():
-    if not os.path.exists('/tmp/worker_checkpoint/checkpoint.json'):
+    if not os.path.exists('/tmp/__hydra_checkpoint.json'):
         return None
-    with open('/tmp/worker_checkpoint/checkpoint.json') as json_file:
+    with open('/tmp/__hydra_checkpoint.json') as json_file:
         ck = checkpoint()
         for key, value in json.load(json_file).items():
             setattr(ck, key, value)
