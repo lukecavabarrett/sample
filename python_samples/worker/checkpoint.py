@@ -20,6 +20,8 @@ class checkpoint:
     def link_file(self, path):
         self._linked_files.append(path)
 
+    def linked_files(self):
+        return self._linked_files
 
 def restore_checkpoint():
     if not os.path.exists('/tmp/__hydra_checkpoint.json'):
