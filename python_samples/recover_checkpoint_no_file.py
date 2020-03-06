@@ -19,6 +19,7 @@ else:
         sys.stderr.write('recovered checkpoint\n')
         time.sleep(1)
         sys.stderr.write('Jack is: '+ck.jack+'\n')
+        print(ck.__dict__)
 
 sys.stderr.flush()
 
