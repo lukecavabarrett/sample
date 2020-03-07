@@ -14,7 +14,9 @@ else:
         l = [1, 2, 3]
         m = np.zeros(shape=(20, 20), dtype=float)
         d = {'list': l, 'matrix': m}
-        pickle.dump(d, 'stuff.pkl')
+        with open('stuff.pkl', 'wb') as f:
+            pickle.dump(d, f)
+            f.close()
         time.sleep(1)
         ck = checkpoint.checkpoint()
         ck.jack = 'sparrow'
