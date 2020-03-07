@@ -23,6 +23,13 @@ class checkpoint:
     def linked_files(self):
         return self._linked_files
 
+    def retrieve_file(self, k):
+        for f in self._linked_files:
+            if os.path.basename(f) == os.path.basename(k):
+                return f
+        return None
+
+
 def restore_checkpoint():
     if not os.path.exists('/tmp/__hydra_checkpoint.json'):
         return None
@@ -31,5 +38,3 @@ def restore_checkpoint():
         for key, value in json.load(json_file).items():
             setattr(ck, key, value)
         return ck
-
-# Checkpoint available: {'best_epoch': 340, 'best_epoch_loss': 0.019209275022149086, 'last_epoch': 749, 'linked_files': ['340.pkl', '749.pkl'], 'request_type': 'save_checkpoint'}
