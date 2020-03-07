@@ -1,5 +1,5 @@
 import json
-from . import comm_pipe, utils
+from . import comm_pipe
 import os
 
 
@@ -18,7 +18,7 @@ class checkpoint:
         comm_pipe.flush()
 
     def link_file(self, path):
-        self._linked_files.append(path)
+        self._linked_files.append(os.path.abspath(path))
 
     def linked_files(self):
         return self._linked_files
