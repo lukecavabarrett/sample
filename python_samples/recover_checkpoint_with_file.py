@@ -21,13 +21,9 @@ else:
         ck.save_to_server()
     else:
         sys.stderr.write('recovered checkpoint\n')
-        print(ck.__dict__)
         time.sleep(1)
         sys.stderr.write('Jack is: '+ck.jack+'\n')
-        if os.path.exists('greetings'):
-            sys.stderr.write('found file!\n')
-        else:
-            sys.stderr.write('file is not here\n')
+        print('Retrieved files:',ck.linked_files())
 
 
 sys.stderr.flush()
