@@ -18,6 +18,7 @@ parser.add_argument('--print_every', type=int, default=1, help='print_every')
 parser.add_argument('--hydra_checkpoints', action='store_true', default=False,
                     help='Save checkpoints to borg server.')
 parser.add_argument('--hydra_checkpoint_every', type=int, default=10, help='Save checkpoints to borg every.')
+parser.add_argument('--hydra_eta_every', type=int, default=10, help='Save checkpoints to borg every.')
 args = parser.parse_args()
 
 start_index = 0
@@ -63,6 +64,9 @@ for n in range(start_index, args.n + 1):
         sys.stdout.flush()
 
     if hydra.is_available():
+        hydra.set_eta((args.n - start_index) * exp_it)
+
+    if args.hydra_checkpoints and n % args.eta_every == 0:
         hydra.set_eta((args.n - start_index) * exp_it)
 
     if args.hydra_checkpoints and (n + 1) % args.hydra_checkpoint_every == 0:
