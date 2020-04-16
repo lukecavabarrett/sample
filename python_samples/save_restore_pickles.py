@@ -27,7 +27,7 @@ else:
         time.sleep(1)
         sys.stderr.write('Jack is: ' + ck.jack + '\n')
         print('Retrieved files:', ck.linked_files())
-        with open(ck.retrieve_file('stuff.pkl'),'rb') as f:
+        with open(ck.retrieve_file('stuff.pkl'), 'rb') as f:
             d = pickle.load(f)
         print(d)
 
