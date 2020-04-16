@@ -66,7 +66,7 @@ for n in range(start_index, args.n + 1):
     if hydra.is_available():
         hydra.set_eta((args.n - start_index) * exp_it)
 
-    if args.hydra_checkpoints and n % args.eta_every == 0:
+    if args.hydra_checkpoints and n % args.hydra_eta_every == 0:
         hydra.set_eta((args.n - start_index) * exp_it)
 
     if args.hydra_checkpoints and (n + 1) % args.hydra_checkpoint_every == 0:
